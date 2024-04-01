@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import morgan from "morgan";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoute.js";
+import categoryRoutes from "./routes/categoryRoutes.js";
 import cors from "cors";
 dotenv.config({ path: "" });
 connectDB();
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use(morgan("dev"));
 // respond with "hello world" when a GET request is made to the homepage
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/category", categoryRoutes);
 app.get("/", (req, res) => {
   res.send("<h1>hello world</h1>");
 });
