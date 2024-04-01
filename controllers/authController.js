@@ -43,6 +43,7 @@ export const registerController = async (req, res) => {
       address,
       password: hashedPassword,
       answer,
+      role: 0,
     }).save();
 
     res.status(201).send({
@@ -99,6 +100,7 @@ export const loginController = async (req, res) => {
         email: user.email,
         phone: user.phone,
         adddress: user.address,
+        role: user.role,
       },
       token,
     });
