@@ -14,7 +14,6 @@ const Register = () => {
 
   // form function
   const handleSubmit = async (e) => {
-    // console.log("Hello world");
     e.preventDefault();
     try {
       const res = await axios.post("/api/v1/auth/register", {
@@ -47,7 +46,7 @@ const Register = () => {
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="form-control"
-              id="exampleInputname"
+              id="exampleInputEmail1"
               placeholder="Enter Your Name"
               required
               autoFocus
@@ -81,7 +80,7 @@ const Register = () => {
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               className="form-control"
-              id="exampleInputphone"
+              id="exampleInputEmail1"
               placeholder="Enter Your Phone"
               required
             />
@@ -92,7 +91,7 @@ const Register = () => {
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               className="form-control"
-              id="exampleInputaddress"
+              id="exampleInputEmail1"
               placeholder="Enter Your Address"
               required
             />
