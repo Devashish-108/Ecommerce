@@ -6,6 +6,9 @@ import SearchInput from "../Form/SearchInput";
 import useCategory from "../../hooks/useCategory";
 import { useCart } from "../../context/cart";
 import { Badge } from "antd";
+import Iconhome from "./image/HomeIcon.jsx";
+import Iconuser from "./image/UserIcon.jsx";
+import IconCart from "./image/CartIcon.jsx";
 
 const Header = () => {
   const [auth, setAuth] = useAuth();
@@ -22,7 +25,7 @@ const Header = () => {
   };
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav className="navbar navbar-expand-lg nav">
         <div className="container-fluid">
           <button
             className="navbar-toggler"
@@ -42,7 +45,11 @@ const Header = () => {
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <SearchInput />
               <li className="nav-item">
-                <NavLink to="/" className="nav-link ">
+                <NavLink
+                  to="/"
+                  className="nav-link "
+                  style={{ color: "white" }}
+                >
                   Home
                 </NavLink>
               </li>
@@ -51,12 +58,17 @@ const Header = () => {
                   className="nav-link dropdown-toggle"
                   to={"/categories"}
                   data-bs-toggle="dropdown"
+                  style={{ color: "white" }}
                 >
                   Categories
                 </Link>
                 <ul className="dropdown-menu">
                   <li>
-                    <Link className="dropdown-item" to={"/categories"}>
+                    <Link
+                      className="dropdown-item"
+                      to={"/categories"}
+                      style={{ color: "green", fontWeight: "bold" }}
+                    >
                       All Categories
                     </Link>
                   </li>
@@ -65,6 +77,7 @@ const Header = () => {
                       <Link
                         className="dropdown-item"
                         to={`/category/${c.slug}`}
+                        // style={{ color: "white" }}
                       >
                         {c.name}
                       </Link>
@@ -94,8 +107,9 @@ const Header = () => {
                       href="#"
                       role="button"
                       data-bs-toggle="dropdown"
-                      style={{ border: "none" }}
+                      style={{ border: "none", color: "white" }}
                     >
+                      <Iconuser />
                       {auth?.user?.name}
                     </NavLink>
                     <ul className="dropdown-menu">
@@ -124,7 +138,12 @@ const Header = () => {
               )}
               <li className="nav-item">
                 <Badge count={cart?.length} showZero>
-                  <NavLink to="/cart" className="nav-link">
+                  <NavLink
+                    to="/cart"
+                    className="nav-link"
+                    style={{ color: "white" }}
+                  >
+                    <IconCart />
                     Cart
                   </NavLink>
                 </Badge>

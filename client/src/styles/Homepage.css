@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400&family=Roboto:ital@1&display=swap');
 .banner-img {
     margin-top: 0px;
   }
@@ -74,8 +75,42 @@
     margin-top: 20px;
   }
   
+  
   .loadmore {
     color: green;
     font-weight: bold;
     font-size: 20px !important;
   }
+  .mode{
+    background-color: orange;
+    color:white ;
+  }
+  .mode1{
+    background-color:  rgb(5, 135, 96);
+    color:white ;
+  }
+  .nav{
+    background-color: rgb(5, 135, 96);
+}
+.navbar-brand{
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    margin-left: 5px;
+    color: white;
+}
+.abc{
+  width : 500px ;
+}
+.imgcon{
+    padding: 2px;
+    border-radius: 50%;
+    background-color: rgb(251, 251, 163);
+    box-shadow: 0px 2px 2px;
+}
+.imagebar{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 3vw 0 3vw;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}

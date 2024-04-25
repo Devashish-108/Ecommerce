@@ -8,6 +8,14 @@ import toast from "react-hot-toast";
 import Layout from "./../components/Layout/Layout";
 import { AiOutlineReload } from "react-icons/ai";
 import "../styles/Homepage.css";
+import { Carousel, Button } from "antd";
+import { LeftOutlined, RightOutlined } from "@ant-design/icons";
+import Slider from "react-slick";
+import a1 from "./image2/banner2.jpg";
+import a2 from "./image2/banner3.jpg";
+import a3 from "./image2/banner4.jpg";
+import a4 from "./image2/slider-1.png";
+import a5 from "./image2/slider-2.png";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -21,6 +29,17 @@ const HomePage = () => {
   const [loading, setLoading] = useState(false);
 
   //get all cat
+  const contentStyle = {
+    height: "auto",
+    // height: "300px",
+    color: "#fff",
+    lineHeight: "160px",
+    textAlign: "center",
+    background: "#364d79",
+    width: "100%",
+    margin: "auto",
+  };
+
   const getAllCategory = async () => {
     try {
       const { data } = await axios.get("/api/v1/category/get-category");
@@ -109,13 +128,186 @@ const HomePage = () => {
   return (
     <Layout title={"ALl Products - Best offers "}>
       {/* banner image */}
-      <img
-        src="/images/banner.png"
-        className="banner-img"
-        alt="bannerimage"
-        width={"100%"}
-      />
       {/* banner image */}
+      <Carousel
+        autoplay
+        prevArrow={
+          <Button
+            type="primary"
+            shape="circle"
+            icon={<LeftOutlined />}
+            size="large"
+          />
+        }
+        nextArrow={
+          <Button
+            type="primary"
+            shape="circle"
+            icon={<RightOutlined />}
+            size="large"
+          />
+        }
+      >
+        <div>
+          <h3 style={{ position: "relative", textAlign: "center" }}>
+            <img
+              src={a4}
+              alt=""
+              className="img2"
+              style={{ objectFit: "cover", width: "100%", height: "100%" }}
+            />
+            <div
+              className="info"
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: "30%",
+                transform: "translate(-50%, -50%)",
+                color: "black",
+                fontSize: "24px",
+              }}
+            >
+              <h2
+                className="mb-4"
+                style={{ fontSize: "90px", fontWeight: "bolder" }}
+              >
+                Fresh Vegetables
+                <br />
+                Big discount
+              </h2>
+              <p style={{ color: "red" }}> Sign up for the daily newsletter</p>
+            </div>
+            {/* Text on top of the image */}
+          </h3>
+        </div>
+        <div>
+          <h3>
+            <img
+              src={a5}
+              alt=""
+              className="img2"
+              style={{ objectFit: "cover", width: "100%", height: "100%" }}
+            />
+            <div
+              className="info"
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: "47%",
+                transform: "translate(-50%, -50%)",
+                color: "black",
+                fontSize: "24px",
+              }}
+            >
+              <h2
+                className="mb-4"
+                style={{ fontSize: "90px", fontWeight: "bolder" }}
+              >
+                Don’t miss amazing
+                <br />
+                grocery deals
+              </h2>
+              <p style={{ color: "red" }}>Sign up for the daily newsletter</p>
+            </div>
+          </h3>
+        </div>
+        {/* <div>
+          <h3 style={contentStyle}>
+            <img
+              src={a3}
+              alt=""
+              className="img2"
+              style={{ objectFit: "cover", width: "100%", height: "100%" }}
+            />
+          </h3>
+        </div> */}
+      </Carousel>
+      <div
+        style={{
+          width: "100vw",
+          display: "flex",
+          justifyContent: "center",
+          marginTop: "2rem",
+          textDecoration: "underline",
+          fontWeight: "bold",
+          color: "green",
+        }}
+      >
+        <h3>Top Categories</h3>
+      </div>
+      <div className="imagebar">
+        <div className="imgdiv" onClick={() => navigate(`/category/seeds`)}>
+          <img
+            src="https://www.bighaat.com/cdn/shop/files/Web-tiles_seeds_c4b48801-b5dc-47d0-bbab-1f36239a219d_720x.jpg?v=1690622232"
+            alt=""
+            className="img1"
+          />
+          <span>seeds</span>
+        </div>
+        <div
+          className="imgdiv"
+          onClick={() => navigate(`/category/Insecticide`)}
+        >
+          <img
+            src="https://www.bighaat.com/cdn/shop/files/Web-tiles_insecticides_0e8b5874-8a86-4780-9be2-c475c620b4c2_720x.jpg?v=1690622271"
+            alt=""
+            className="img1"
+          />
+          <span>Insecticide</span>
+        </div>
+        <div
+          className="imgdiv"
+          onClick={() => navigate(`/category/Fungicides`)}
+        >
+          <img
+            src="https://www.bighaat.com/cdn/shop/files/Web-tiles_growth-promoters_53b40bcd-3fbb-463a-9e80-606491c74bd3_720x.jpg?v=1690622598"
+            alt=""
+            className="img1"
+          />
+          <span>Fungicides</span>
+        </div>
+        <div
+          className="imgdiv"
+          onClick={() => navigate(`/category/Growth-Promoters`)}
+        >
+          <img
+            src="https://www.bighaat.com/cdn/shop/files/Web-tiles_fungicides_161c08ff-faf6-4e87-b8fc-50b4ff9bac97_720x.jpg?v=1690622309"
+            alt=""
+            className="img1"
+          />
+          <span>Growth Promoters</span>
+        </div>
+        <div
+          className="imgdiv"
+          onClick={() => navigate(`/category/Herbicides`)}
+        >
+          <img
+            src="https://www.bighaat.com/cdn/shop/files/Web-tiles_herbicide_959fa6ad-1efb-4f0c-82ce-e2ade18a3a5c_720x.jpg?v=1690622393"
+            alt=""
+            className="img1"
+          />
+          <span>Herbicides</span>
+        </div>
+        <div
+          className="imgdiv"
+          onClick={() => navigate(`/category/Implements`)}
+        >
+          <img
+            src="https://www.bighaat.com/cdn/shop/files/Web-tiles_Implements_2bf941e5-f0f6-4a74-bd0b-06d00fb5223e_720x.jpg?v=1690622429"
+            alt=""
+            className="img1"
+          />
+          <span>Implements</span>
+        </div>
+        <div className="imgdiv" onClick={() => navigate(`/category/seeds`)}>
+          <img
+            src="https://www.bighaat.com/cdn/shop/files/Circle-KB-204_720x.jpg?v=1648637300"
+            alt=""
+            className="img1"
+          />
+          <span>Knowledge</span>
+        </div>
+      </div>
       <div className="container-fluid row mt-3 home-page">
         <div className="col-md-3 filters">
           <h4 className="text-center">Filter By Category</h4>
@@ -174,7 +366,8 @@ const HomePage = () => {
                   </p>
                   <div className="card-name-price">
                     <button
-                      className="btn btn-info ms-1"
+                      className="btn btn-info ms-1 mode"
+                      style={{ transition: "background-color 0.3s" }}
                       onClick={() => navigate(`/product/${p.slug}`)}
                     >
                       More Details
