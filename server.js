@@ -7,6 +7,8 @@ import authRoutes from "./routes/authRoute.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
 import cors from "cors";
+import path from "path" ;
+
 dotenv.config({ path: "" });
 connectDB();
 const app = express();
@@ -20,7 +22,6 @@ app.use("/api/v1/product", productRoutes);
 app.get("/", (req, res) => {
   res.send("<h1>hello world</h1>");
 });
-
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(
