@@ -14,8 +14,12 @@ import Slider from "react-slick";
 import a1 from "./image2/banner2.jpg";
 import a2 from "./image2/banner3.jpg";
 import a3 from "./image2/banner4.jpg";
+import o1 from "./image2/offer1.avif";
+import o2 from "./image2/offer2.avif";
+import o3 from "./image2/offer3.avif";
 import a4 from "./image2/slider-1.png";
 import a5 from "./image2/slider-2.png";
+import "./Home.css";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -126,7 +130,7 @@ const HomePage = () => {
     }
   };
   return (
-    <Layout title={"ALl Products - Best offers "}>
+    <Layout title={"ALL Products - Best offers "}>
       {/* banner image */}
       {/* banner image */}
       <Carousel
@@ -175,7 +179,6 @@ const HomePage = () => {
                 <br />
                 Big discount
               </h2>
-              <p style={{ color: "red" }}> Sign up for the daily newsletter</p>
             </div>
             {/* Text on top of the image */}
           </h3>
@@ -207,7 +210,6 @@ const HomePage = () => {
                 <br />
                 grocery deals
               </h2>
-              <p style={{ color: "red" }}>Sign up for the daily newsletter</p>
             </div>
           </h3>
         </div>
@@ -308,10 +310,22 @@ const HomePage = () => {
           <span>Knowledge</span>
         </div>
       </div>
+      <div className="offercon">
+        <img src={o1} alt="" className="omg" />
+        <img src={o2} alt="" className="omg" />
+        <img src={o3} alt="" className="omg" />
+      </div>
+
       <div className="container-fluid row mt-3 home-page">
-        <div className="col-md-3 filters">
+        <div
+          className="col-md-3 filters"
+          style={{
+            backgroundColor: "rgb(238, 243, 238)",
+            borderTopRightRadius: "15px",
+          }}
+        >
           <h4 className="text-center">Filter By Category</h4>
-          <div className="d-flex flex-column">
+          <div className="d-flex flex-column ms-3">
             {categories?.map((c) => (
               <Checkbox
                 key={c._id}
@@ -341,6 +355,7 @@ const HomePage = () => {
             </button>
           </div>
         </div>
+
         <div className="col-md-9 ">
           <h1 className="text-center">All Products</h1>
           <div className="d-flex flex-wrap">
@@ -357,7 +372,7 @@ const HomePage = () => {
                     <h5 className="card-title card-price">
                       {p.price.toLocaleString("en-US", {
                         style: "currency",
-                        currency: "USD",
+                        currency: "INR",
                       })}
                     </h5>
                   </div>
