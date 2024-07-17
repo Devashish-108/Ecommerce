@@ -12,7 +12,12 @@ import path from "path" ;
 dotenv.config({ path: "" });
 connectDB();
 const app = express();
-app.use(cors());
+const corsOptions ={
+  origin:'*',
+  credentials:true,
+  optionSuccessStatus:200,
+}
+app.use(cors(corsOptions)) ;
 app.use(express.json());
 app.use(morgan("dev"));
 // respond with "hello world" when a GET request is made to the homepage
