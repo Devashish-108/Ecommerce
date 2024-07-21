@@ -21,7 +21,7 @@ const AdminOrders = () => {
   const [auth, setAuth] = useAuth();
   const getOrders = async () => {
     try {
-      const { data } = await axios.get("/api/v1/auth/all-orders");
+      const { data } = await axios.get("https://ecommerce-eeqh.onrender.com//api/v1/auth/all-orders");
       setOrders(data);
     } catch (error) {
       console.log(error);
