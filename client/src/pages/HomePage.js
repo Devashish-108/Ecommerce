@@ -238,76 +238,65 @@ const HomePage = () => {
         <h3>Top Categories</h3>
       </div>
       <div className="imagebar">
-        <div className="imgdiv" onClick={() => navigate(`/category/seeds`)}>
+        <div className="imgdiv" onClick={() => navigate(`/category/vegetable`)}>
           <img
-            src="https://www.bighaat.com/cdn/shop/files/Web-tiles_seeds_c4b48801-b5dc-47d0-bbab-1f36239a219d_720x.jpg?v=1690622232"
+            src="https://www.google.com/imgres?q=vegetables&imgurl=https%3A%2F%2Fcdn.britannica.com%2F17%2F196817-159-9E487F15%2Fvegetables.jpg&imgrefurl=https%3A%2F%2Fwww.britannica.com%2Ftopic%2Fvegetable&docid=s6d9O2zDiOMrvM&tbnid=kX7jpz5x7pKjOM&vet=12ahUKEwjc6-W7yfmHAxW3XmwGHQu4B9kQM3oECHwQAA..i&w=1920&h=1080&hcb=2&ved=2ahUKEwjc6-W7yfmHAxW3XmwGHQu4B9kQM3oECHwQAA"
             alt=""
             className="img1"
           />
-          <span>seeds</span>
+          <span>Vegetable</span>
         </div>
         <div
           className="imgdiv"
-          onClick={() => navigate(`/category/Insecticide`)}
+          onClick={() => navigate(`/category/fruits`)}
         >
           <img
             src="https://www.bighaat.com/cdn/shop/files/Web-tiles_insecticides_0e8b5874-8a86-4780-9be2-c475c620b4c2_720x.jpg?v=1690622271"
             alt=""
             className="img1"
           />
-          <span>Insecticide</span>
+          <span>Fruits</span>
         </div>
         <div
           className="imgdiv"
-          onClick={() => navigate(`/category/Fungicides`)}
+          onClick={() => navigate(`/category/snacks`)}
         >
           <img
             src="https://www.bighaat.com/cdn/shop/files/Web-tiles_growth-promoters_53b40bcd-3fbb-463a-9e80-606491c74bd3_720x.jpg?v=1690622598"
             alt=""
             className="img1"
           />
-          <span>Fungicides</span>
+          <span>Snacks</span>
         </div>
         <div
           className="imgdiv"
-          onClick={() => navigate(`/category/Growth-Promoters`)}
+          onClick={() => navigate(`/category/beverages`)}
         >
           <img
             src="https://www.bighaat.com/cdn/shop/files/Web-tiles_fungicides_161c08ff-faf6-4e87-b8fc-50b4ff9bac97_720x.jpg?v=1690622309"
             alt=""
             className="img1"
           />
-          <span>Growth Promoters</span>
+          <span>Beverages</span>
         </div>
         <div
           className="imgdiv"
-          onClick={() => navigate(`/category/Herbicides`)}
-        >
-          <img
-            src="https://www.bighaat.com/cdn/shop/files/Web-tiles_herbicide_959fa6ad-1efb-4f0c-82ce-e2ade18a3a5c_720x.jpg?v=1690622393"
-            alt=""
-            className="img1"
-          />
-          <span>Herbicides</span>
-        </div>
-        <div
-          className="imgdiv"
-          onClick={() => navigate(`/category/Implements`)}
+          onClick={() => navigate(`/category/your-daily-staples`)}
         >
           <img
             src="https://www.bighaat.com/cdn/shop/files/Web-tiles_Implements_2bf941e5-f0f6-4a74-bd0b-06d00fb5223e_720x.jpg?v=1690622429"
             alt=""
             className="img1"
           />
-          <span>Implements</span>
+          <span>Your Daily staples</span>
         </div>
-        <div className="imgdiv" onClick={() => navigate(`/category/seeds`)}>
+        <div className="imgdiv" onClick={() => navigate(`/category/home-and-kitchen`)}>
           <img
             src="https://www.bighaat.com/cdn/shop/files/Circle-KB-204_720x.jpg?v=1648637300"
             alt=""
             className="img1"
           />
-          <span>Knowledge</span>
+          <span>Home and Kitchen</span>
         </div>
       </div>
       <div className="offercon">
