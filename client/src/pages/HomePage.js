@@ -345,18 +345,20 @@ const HomePage = () => {
           </div>
         </div>
 
-        <div className="col-md-9 ">
-          <h1 className="text-center">All Products</h1>
-          <div className="d-flex flex-wrap">
-            {products?.map((p) => (
-              <div className="card m-2" key={p._id}>
+        <div className="col-md-9">
+        <h1 className="text-center">All Products</h1>
+        <div className="row" style={{ gap: '80px', padding: '0 50px' }}>
+          {products?.map((p) => (
+            <div className="col-sm-6 col-md-4 col-lg-3" key={p._id}>
+              <div className="card m-2" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
                 <img
                   src={`https://ecommerce-eeqh.onrender.com/api/v1/product/product-photo/${p._id}`}
                   className="card-img-top"
                   alt={p.name}
+                  style={{ objectFit: 'cover', height: '200px', width: '100%' }} 
                 />
-                <div className="card-body">
-                  <div className="card-name-price">
+                <div className="card-body d-flex flex-column">
+                  <div className="card-name-price d-flex justify-content-between">
                     <h5 className="card-title">{p.name}</h5>
                     <h5 className="card-title card-price">
                       {p.price.toLocaleString("en-US", {
@@ -365,25 +367,22 @@ const HomePage = () => {
                       })}
                     </h5>
                   </div>
-                  <p className="card-text ">
+                  <p className="card-text">
                     {p.description.substring(0, 60)}...
                   </p>
-                  <div className="card-name-price">
+                  <div className="mt-auto d-flex justify-content-between">
                     <button
-                      className="btn btn-info ms-1 mode"
+                      className="btn btn-info mode"
                       style={{ transition: "background-color 0.3s" }}
                       onClick={() => navigate(`/product/${p.slug}`)}
                     >
                       More Details
                     </button>
                     <button
-                      className="btn btn-dark ms-1"
+                      className="btn btn-dark"
                       onClick={() => {
                         setCart([...cart, p]);
-                        localStorage.setItem(
-                          "cart",
-                          JSON.stringify([...cart, p])
-                        );
+                        localStorage.setItem("cart", JSON.stringify([...cart, p]));
                         toast.success("Item Added to cart");
                       }}
                     >
@@ -392,28 +391,28 @@ const HomePage = () => {
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
-          <div className="m-2 p-3">
-            {products && products.length < total && (
-              <button
-                className="btn loadmore"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setPage(page + 1);
-                }}
-              >
-                {loading ? (
-                  "Loading ..."
-                ) : (
-                  <>
-                    {" "}
-                    Loadmore <AiOutlineReload />
-                  </>
-                )}
-              </button>
-            )}
-          </div>
+            </div>
+          ))}
+        </div>
+        <div className="m-2 p-3 text-center">
+          {products && products.length < total && (
+            <button
+              className="btn loadmore"
+              onClick={(e) => {
+                e.preventDefault();
+                setPage(page + 1);
+              }}
+            >
+              {loading ? (
+                "Loading ..."
+              ) : (
+                <>
+                  Loadmore <AiOutlineReload />
+                </>
+              )}
+            </button>
+          )}
+        </div>
         </div>
       </div>
     </Layout>
