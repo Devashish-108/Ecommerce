@@ -4,10 +4,9 @@ import { useCart } from "../context/cart";
 import { useAuth } from "../context/auth";
 import { useNavigate } from "react-router-dom";
 import DropIn from "braintree-web-drop-in-react";
-import { AiFillWarning } from "react-icons/ai";
 import axios from "axios";
 import toast from "react-hot-toast";
-import "../styles/CartStyles.css";
+import "./Cartstyle.css";
 
 const CartPage = () => {
   const [auth, setAuth] = useAuth();
@@ -17,12 +16,12 @@ const CartPage = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  //total price
+  // Total price calculation
   const totalPrice = () => {
     try {
       let total = 0;
-      cart?.map((item) => {
-        total = total + item.price;
+      cart?.forEach((item) => {
+        total += item.price;
       });
       return total.toLocaleString("en-US", {
         style: "currency",
@@ -32,20 +31,19 @@ const CartPage = () => {
       console.log(error);
     }
   };
-  //detele item
+
+  // Remove item from cart
   const removeCartItem = (pid) => {
     try {
-      let myCart = [...cart];
-      let index = myCart.findIndex((item) => item._id === pid);
-      myCart.splice(index, 1);
-      setCart(myCart);
-      localStorage.setItem("cart", JSON.stringify(myCart));
+      let updatedCart = cart.filter((item) => item._id !== pid);
+      setCart(updatedCart);
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
     } catch (error) {
       console.log(error);
     }
   };
 
-  //get payment gateway token
+  // Get payment gateway token
   const getToken = async () => {
     try {
       const { data } = await axios.get("https://ecommerce-eeqh.onrender.com/api/v1/product/braintree/token");
@@ -54,11 +52,12 @@ const CartPage = () => {
       console.log(error);
     }
   };
+
   useEffect(() => {
     getToken();
   }, [auth?.token]);
 
-  //handle payments
+  // Handle payment
   const handlePayment = async () => {
     try {
       setLoading(true);
@@ -71,49 +70,53 @@ const CartPage = () => {
       localStorage.removeItem("cart");
       setCart([]);
       navigate("/dashboard/user/orders");
-      toast.success("Payment Completed Successfully ");
+      toast.success("Payment Completed Successfully");
     } catch (error) {
       console.log(error);
       setLoading(false);
     }
   };
+
   return (
     <Layout>
-      <div className=" cart-page">
-        <div className="row">
-          <div className="col-md-12">
-            <h1 className="text-center bg-light p-2 mb-1">
-              {!auth?.user
-                ? "Hello Guest"
-                : `Hello  ${auth?.token && auth?.user?.name}`}
-              <p className="text-center">
-                {cart?.length
-                  ? `You Have ${cart.length} items in your cart ${
-                      auth?.token ? "" : "please login to checkout !"
-                    }`
-                  : " Your Cart Is Empty"}
-              </p>
-            </h1>
+      <div className="cart-page">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <h1 className="text-center bg-light p-2 mb-1">
+                {!auth?.user
+                  ? "Hello Guest"
+                  : `Hello ${auth?.token && auth?.user?.name}`}
+                <p className="text-center">
+                  {cart?.length
+                    ? `You have ${cart.length} items in your cart ${
+                        auth?.token ? "" : "Please login to checkout!"
+                      }`
+                    : "Your Cart is Empty"}
+                </p>
+              </h1>
+            </div>
           </div>
-        </div>
-        <div className="container ">
-          <div className="row ">
-            <div className="col-md-7  p-0 m-0">
+          <div className="row">
+            <div className="col-md-7">
               {cart?.map((p) => (
-                <div className="row card flex-row" key={p._id}>
+                <div className="row card flex-row mb-3" key={p._id}>
                   <div className="col-md-4">
                     <img
                       src={`https://ecommerce-eeqh.onrender.com/api/v1/product/product-photo/${p._id}`}
                       className="card-img-top"
                       alt={p.name}
                       width="100%"
-                      height={"130px"}
+                      height="130px"
                     />
                   </div>
                   <div className="col-md-4">
-                    <p>{p.name}</p>
-                    <p>{p.description.substring(0, 30)}</p>
-                    <p>Price : {p.price}</p>
+                    <p className="mb-1">{p.name}</p>
+                    <p className="mb-1">{p.description.substring(0, 30)}</p>
+                    <p>Price: {p.price.toLocaleString("en-US", {
+                      style: "currency",
+                      currency: "USD",
+                    })}</p>
                   </div>
                   <div className="col-md-4 cart-remove-btn">
                     <button
@@ -126,24 +129,22 @@ const CartPage = () => {
                 </div>
               ))}
             </div>
-            <div className="col-md-5 cart-summary ">
+            <div className="col-md-5 cart-summary">
               <h2>Cart Summary</h2>
               <p>Total | Checkout | Payment</p>
               <hr />
-              <h4>Total : {totalPrice()} </h4>
+              <h4>Total: {totalPrice()}</h4>
               {auth?.user?.address ? (
-                <>
-                  <div className="mb-3">
-                    <h4>Current Address</h4>
-                    <h5>{auth?.user?.address}</h5>
-                    <button
-                      className="btn btn-outline-warning"
-                      onClick={() => navigate("/dashboard/user/profile")}
-                    >
-                      Update Address
-                    </button>
-                  </div>
-                </>
+                <div className="mb-3">
+                  <h4>Current Address</h4>
+                  <h5>{auth?.user?.address}</h5>
+                  <button
+                    className="btn btn-outline-warning"
+                    onClick={() => navigate("/dashboard/user/profile")}
+                  >
+                    Update Address
+                  </button>
+                </div>
               ) : (
                 <div className="mb-3">
                   {auth?.token ? (
@@ -162,7 +163,7 @@ const CartPage = () => {
                         })
                       }
                     >
-                      Plase Login to checkout
+                      Please Login to Checkout
                     </button>
                   )}
                 </div>
@@ -181,7 +182,6 @@ const CartPage = () => {
                       }}
                       onInstance={(instance) => setInstance(instance)}
                     />
-
                     <button
                       className="btn btn-primary"
                       onClick={handlePayment}

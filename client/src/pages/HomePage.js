@@ -19,6 +19,12 @@ import o2 from "./image2/offer2.avif";
 import o3 from "./image2/offer3.avif";
 import a4 from "./image2/slider-1.png";
 import a5 from "./image2/slider-2.png";
+import veg from "./image2/veg.png" ;
+import fruit from "./image2/fruit.png" ;
+import snacks from "./image2/snacks.png" ;
+import beverages from "./image2/beverages.png" ;
+import staples from "./image2/staples.png" ;
+import kitchen from "./image2/kitchen.png" ;
 import "./Home.css";
 
 const HomePage = () => {
@@ -225,175 +231,213 @@ const HomePage = () => {
         </div> */}
       </Carousel>
       <div
-        style={{
-          width: "100vw",
-          display: "flex",
-          justifyContent: "center",
-          marginTop: "2rem",
-          textDecoration: "underline",
-          fontWeight: "bold",
-          color: "green",
-        }}
-      >
-        <h3>Top Categories</h3>
-      </div>
-      <div className="imagebar">
-        <div className="imgdiv" onClick={() => navigate(`/category/vegetable`)}>
-          <img
-            src="https://www.google.com/imgres?q=vegetables&imgurl=https%3A%2F%2Fcdn.britannica.com%2F17%2F196817-159-9E487F15%2Fvegetables.jpg&imgrefurl=https%3A%2F%2Fwww.britannica.com%2Ftopic%2Fvegetable&docid=s6d9O2zDiOMrvM&tbnid=kX7jpz5x7pKjOM&vet=12ahUKEwjc6-W7yfmHAxW3XmwGHQu4B9kQM3oECHwQAA..i&w=1920&h=1080&hcb=2&ved=2ahUKEwjc6-W7yfmHAxW3XmwGHQu4B9kQM3oECHwQAA"
-            alt=""
-            className="img1"
-          />
-          <span>Vegetable</span>
-        </div>
-        <div
-          className="imgdiv"
-          onClick={() => navigate(`/category/fruits`)}
-        >
-          <img
-            src="https://www.bighaat.com/cdn/shop/files/Web-tiles_insecticides_0e8b5874-8a86-4780-9be2-c475c620b4c2_720x.jpg?v=1690622271"
-            alt=""
-            className="img1"
-          />
-          <span>Fruits</span>
-        </div>
-        <div
-          className="imgdiv"
-          onClick={() => navigate(`/category/snacks`)}
-        >
-          <img
-            src="https://www.bighaat.com/cdn/shop/files/Web-tiles_growth-promoters_53b40bcd-3fbb-463a-9e80-606491c74bd3_720x.jpg?v=1690622598"
-            alt=""
-            className="img1"
-          />
-          <span>Snacks</span>
-        </div>
-        <div
-          className="imgdiv"
-          onClick={() => navigate(`/category/beverages`)}
-        >
-          <img
-            src="https://www.bighaat.com/cdn/shop/files/Web-tiles_fungicides_161c08ff-faf6-4e87-b8fc-50b4ff9bac97_720x.jpg?v=1690622309"
-            alt=""
-            className="img1"
-          />
-          <span>Beverages</span>
-        </div>
-        <div
-          className="imgdiv"
-          onClick={() => navigate(`/category/your-daily-staples`)}
-        >
-          <img
-            src="https://www.bighaat.com/cdn/shop/files/Web-tiles_Implements_2bf941e5-f0f6-4a74-bd0b-06d00fb5223e_720x.jpg?v=1690622429"
-            alt=""
-            className="img1"
-          />
-          <span>Your Daily staples</span>
-        </div>
-        <div className="imgdiv" onClick={() => navigate(`/category/home-and-kitchen`)}>
-          <img
-            src="https://www.bighaat.com/cdn/shop/files/Circle-KB-204_720x.jpg?v=1648637300"
-            alt=""
-            className="img1"
-          />
-          <span>Home and Kitchen</span>
-        </div>
-      </div>
-      <div className="offercon">
-        <img src={o1} alt="" className="omg" />
-        <img src={o2} alt="" className="omg" />
-        <img src={o3} alt="" className="omg" />
-      </div>
+  style={{
+    width: "100vw",
+    display: "flex",
+    justifyContent: "center",
+    marginTop: "2rem",
+    textDecoration: "underline",
+    fontWeight: "bold",
+    color: "green",
+    fontSize: "24px",
+  }}
+>
+  <h3>Top Categories</h3>
+</div>
+<div className="imagebar">
+  <div className="imgdiv" onClick={() => navigate(`/category/vegetable`)}>
+    <img
+      src={veg}
+      alt="Vegetables"
+      className="img1"
+    />
+    <span>Vegetables</span>
+  </div>
+  <div className="imgdiv" onClick={() => navigate(`/category/fruits`)}>
+    <img
+      src={fruit}
+      alt="Fruits"
+      className="img1"
+    />
+    <span>Fruits</span>
+  </div>
+  <div className="imgdiv" onClick={() => navigate(`/category/snacks`)}>
+    <img
+      src={snacks}
+      alt="Snacks"
+      className="img1"
+    />
+    <span>Snacks</span>
+  </div>
+  <div className="imgdiv" onClick={() => navigate(`/category/beverages`)}>
+    <img
+      src={beverages}
+      alt="Beverages"
+      className="img1"
+    />
+    <span>Beverages</span>
+  </div>
+  <div className="imgdiv" onClick={() => navigate(`/category/your-daily-staples`)}>
+    <img
+      src={staples}
+      alt="Daily Staples"
+      className="img1"
+    />
+    <span>Your Daily Staples</span>
+  </div>
+  <div className="imgdiv" onClick={() => navigate(`/category/home-and-kitchen`)}>
+    <img
+      src={kitchen}
+      alt="Home and Kitchen"
+      className="img1"
+    />
+    <span>Home and Kitchen</span>
+  </div>
+</div>
+{/* <div className="offercon">
+  <img src={o1} alt="Offer 1" className="offer-img" />
+  <img src={o2} alt="Offer 2" className="offer-img" />
+  <img src={o3} alt="Offer 3" className="offer-img" />
+</div> */}
 
       <div className="container-fluid row mt-3 home-page">
-        <div
-          className="col-md-3 filters"
-          style={{
-            backgroundColor: "rgb(238, 243, 238)",
-            borderTopRightRadius: "15px",
-          }}
-        >
-          <h4 className="text-center">Filter By Category</h4>
-          <div className="d-flex flex-column ms-3">
-            {categories?.map((c) => (
-              <Checkbox
-                key={c._id}
-                onChange={(e) => handleFilter(e.target.checked, c._id)}
-              >
-                {c.name}
-              </Checkbox>
-            ))}
-          </div>
-          {/* price filter */}
-          <h4 className="text-center mt-4">Filter By Price</h4>
-          <div className="d-flex flex-column">
-            <Radio.Group onChange={(e) => setRadio(e.target.value)}>
-              {Prices?.map((p) => (
-                <div key={p._id}>
-                  <Radio value={p.array}>{p.name}</Radio>
-                </div>
-              ))}
-            </Radio.Group>
-          </div>
-          <div className="d-flex flex-column">
-            <button
-              className="btn btn-danger"
-              onClick={() => window.location.reload()}
-            >
-              RESET FILTERS
-            </button>
-          </div>
-        </div>
+      <div
+  className="col-md-3 filters"
+  style={{
+    backgroundColor: "#f9f9f9", // Light gray background for a subtle contrast
+    borderTopRightRadius: "15px",
+    padding: "1rem",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+    border: "1px solid #e0e0e0", // Slightly darker border for subtle separation
+  }}
+>
+  <h4 className="text-center" style={{ marginBottom: "1rem", color: "#343a40" }}>Filter By Category</h4>
+  <div className="d-flex flex-column">
+    {categories?.map((c) => (
+      <Checkbox
+        key={c._id}
+        onChange={(e) => handleFilter(e.target.checked, c._id)}
+        style={{ marginBottom: "0.5rem", color: "#495057" }} // Darker gray for checkbox text
+      >
+        {c.name}
+      </Checkbox>
+    ))}
+  </div>
+
+  <h4 className="text-center mt-4" style={{ marginBottom: "1rem", color: "#343a40" }}>Filter By Price</h4>
+  <div className="d-flex flex-column">
+    <Radio.Group onChange={(e) => setRadio(e.target.value)}>
+      {Prices?.map((p) => (
+        <Radio key={p._id} value={p.array} style={{ marginBottom: "0.5rem", color: "#495057" }}>
+          {p.name}
+        </Radio>
+      ))}
+    </Radio.Group>
+  </div>
+
+  <div className="text-center mt-4">
+    <button
+      className="btn btn-outline-secondary"
+      style={{
+        borderRadius: "20px",
+        padding: "0.5rem 1.5rem",
+        border: "2px solid #6c757d", // Secondary color border
+        color: "#6c757d", // Secondary color text
+        backgroundColor: "#ffffff", // White background
+        transition: "background-color 0.3s, color 0.3s",
+      }}
+      onClick={() => window.location.reload()}
+    >
+      RESET FILTERS
+    </button>
+  </div>
+</div>
 
         <div className="col-md-9">
         <h1 className="text-center">All Products</h1>
         <div className="row" style={{ gap: '80px', padding: '0 50px' }}>
-          {products?.map((p) => (
-            <div className="col-sm-6 col-md-4 col-lg-3" key={p._id}>
-              <div className="card m-2" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                <img
-                  src={`https://ecommerce-eeqh.onrender.com/api/v1/product/product-photo/${p._id}`}
-                  className="card-img-top"
-                  alt={p.name}
-                  style={{ objectFit: 'cover', height: '200px', width: '100%' }} 
-                />
-                <div className="card-body d-flex flex-column">
-                  <div className="card-name-price d-flex justify-content-between">
-                    <h5 className="card-title">{p.name}</h5>
-                    <h5 className="card-title card-price">
-                      {p.price.toLocaleString("en-US", {
-                        style: "currency",
-                        currency: "INR",
-                      })}
-                    </h5>
-                  </div>
-                  <p className="card-text">
-                    {p.description.substring(0, 60)}...
-                  </p>
-                  <div className="mt-auto d-flex justify-content-between">
-                    <button
-                      className="btn btn-info mode"
-                      style={{ transition: "background-color 0.3s" }}
-                      onClick={() => navigate(`/product/${p.slug}`)}
-                    >
-                      More Details
-                    </button>
-                    <button
-                      className="btn btn-dark"
-                      onClick={() => {
-                        setCart([...cart, p]);
-                        localStorage.setItem("cart", JSON.stringify([...cart, p]));
-                        toast.success("Item Added to cart");
-                      }}
-                    >
-                      ADD TO CART
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
+  {products?.map((p) => (
+    <div className="col-sm-6 col-md-4 col-lg-3" key={p._id}>
+      <div 
+        className="card m-2" 
+        style={{ 
+          height: '100%', 
+          display: 'flex', 
+          flexDirection: 'column', 
+          borderRadius: '15px', 
+          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+          transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+        }}
+        onMouseEnter={e => {
+          e.currentTarget.style.transform = 'translateY(-10px)';
+          e.currentTarget.style.boxShadow = '0 8px 16px rgba(0, 0, 0, 0.2)';
+        }}
+        onMouseLeave={e => {
+          e.currentTarget.style.transform = 'translateY(0)';
+          e.currentTarget.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
+        }}
+      >
+        <img
+          src={`https://ecommerce-eeqh.onrender.com/api/v1/product/product-photo/${p._id}`}
+          className="card-img-top"
+          alt={p.name}
+          style={{ 
+            objectFit: 'cover', 
+            height: '200px', 
+            width: '100%', 
+            borderTopLeftRadius: '15px',
+            borderTopRightRadius: '15px'
+          }} 
+        />
+        <div className="card-body d-flex flex-column">
+          <div className="card-name-price d-flex justify-content-between">
+            <h5 className="card-title" style={{ fontWeight: 'bold' }}>{p.name}</h5>
+            <h5 className="card-title card-price" style={{ color: 'green', fontWeight: 'bold' }}>
+              {p.price.toLocaleString("en-US", {
+                style: "currency",
+                currency: "INR",
+              })}
+            </h5>
+          </div>
+          <p className="card-text" style={{ color: '#666' }}>
+            {p.description.substring(0, 60)}...
+          </p>
+          <div className="mt-auto d-flex justify-content-between">
+            <button
+              className="btn btn-info mode"
+              style={{ 
+                backgroundColor: '#007bff',
+                color: 'white',
+                borderRadius: '10px',
+                transition: "background-color 0.3s" 
+              }}
+              onClick={() => navigate(`/product/${p.slug}`)}
+            >
+              More Details
+            </button>
+            <button
+              className="btn btn-dark"
+              style={{ 
+                borderRadius: '10px',
+                backgroundColor: '#28a745',
+                color: 'white',
+                transition: "background-color 0.3s"
+              }}
+              onClick={() => {
+                setCart([...cart, p]);
+                localStorage.setItem("cart", JSON.stringify([...cart, p]));
+                toast.success("Item Added to cart");
+              }}
+            >
+              ADD TO CART
+            </button>
+          </div>
         </div>
+      </div>
+    </div>
+  ))}
+</div>
+
         <div className="m-2 p-3 text-center">
           {products && products.length < total && (
             <button

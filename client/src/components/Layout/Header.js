@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { useAuth } from "../../context/auth";
 import toast from "react-hot-toast";
@@ -9,11 +9,15 @@ import { Badge } from "antd";
 import Iconhome from "./image/HomeIcon.jsx";
 import Iconuser from "./image/UserIcon.jsx";
 import IconCart from "./image/CartIcon.jsx";
+import icon from "./image/icon.png" ;
+import { Switch } from "antd";
 
 const Header = () => {
   const [auth, setAuth] = useAuth();
   const [cart] = useCart();
   const categories = useCategory();
+  const [darkMode, setDarkMode] = useState(false);
+
   const handleLogout = () => {
     setAuth({
       ...auth,
@@ -23,9 +27,16 @@ const Header = () => {
     localStorage.removeItem("auth");
     toast.success("Logout Successfully");
   };
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+    document.body.style.backgroundColor = !darkMode ? "#333" : "#fff";
+    document.body.style.color = !darkMode ? "#fff" : "#000";
+  };
+
   return (
     <>
-      <nav className="navbar navbar-expand-lg nav">
+      <nav className={`navbar navbar-expand-lg ${darkMode ? 'navbar-dark bg-dark' : 'navbar-light bg-light'}`}>
         <div className="container-fluid">
           <button
             className="navbar-toggler"
@@ -39,16 +50,33 @@ const Header = () => {
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <Link to="/" className="navbar-brand">
-              🛒 Daily Grocer
-            </Link>
+            <div className="d-flex align-items-center">
+              <Link to="/" className="navbar-brand d-flex align-items-center">
+                <img
+                  src={icon}
+                  alt=""
+                  className="img10"
+                  style={{
+                    width: '50px',
+                    backgroundBlendMode: 'lighten',
+                    borderRadius: '50%',
+                    transition: '1s ease all',
+                    cursor: 'pointer',
+                    marginRight: '10px',
+                  }}
+                />
+                <span style={{ color: darkMode ? 'white' : 'black', fontSize: '1.25rem' }}>Daily Grocer</span>
+              </Link>
+              <Switch checked={darkMode} onChange={toggleDarkMode} style={{ marginLeft: 'auto' }} />
+              <span style={{ color: darkMode ? 'white' : 'black', marginLeft: '8px', alignSelf: 'center' }}>Dark Mode</span>
+            </div>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <SearchInput />
               <li className="nav-item">
                 <NavLink
                   to="/"
-                  className="nav-link "
-                  style={{ color: "white" }}
+                  className="nav-link"
+                  style={{ color: darkMode ? "white" : "black" }}
                 >
                   Home
                 </NavLink>
@@ -58,7 +86,7 @@ const Header = () => {
                   className="nav-link dropdown-toggle"
                   to={"/categories"}
                   data-bs-toggle="dropdown"
-                  style={{ color: "white" }}
+                  style={{ color: darkMode ? "white" : "black" }}
                 >
                   Categories
                 </Link>
@@ -67,17 +95,17 @@ const Header = () => {
                     <Link
                       className="dropdown-item"
                       to={"/categories"}
-                      style={{ color: "green", fontWeight: "bold" }}
+                      style={{ color: darkMode ? "lightgreen" : "green", fontWeight: "bold" }}
                     >
                       All Categories
                     </Link>
                   </li>
                   {categories?.map((c) => (
-                    <li>
+                    <li key={c._id}>
                       <Link
                         className="dropdown-item"
                         to={`/category/${c.slug}`}
-                        // style={{ color: "white" }}
+                        style={{ color: darkMode ? "lightgray" : "black" }}
                       >
                         {c.name}
                       </Link>
@@ -89,12 +117,12 @@ const Header = () => {
               {!auth?.user ? (
                 <>
                   <li className="nav-item">
-                    <NavLink to="/register" className="nav-link">
+                    <NavLink to="/register" className="nav-link" style={{ color: darkMode ? "white" : "black" }}>
                       Register
                     </NavLink>
                   </li>
                   <li className="nav-item">
-                    <NavLink to="/login" className="nav-link">
+                    <NavLink to="/login" className="nav-link" style={{ color: darkMode ? "white" : "black" }}>
                       Login
                     </NavLink>
                   </li>
@@ -107,7 +135,7 @@ const Header = () => {
                       href="#"
                       role="button"
                       data-bs-toggle="dropdown"
-                      style={{ border: "none", color: "white" }}
+                      style={{ border: "none", color: darkMode ? "white" : "black" }}
                     >
                       <Iconuser />
                       {auth?.user?.name}
@@ -115,10 +143,9 @@ const Header = () => {
                     <ul className="dropdown-menu">
                       <li>
                         <NavLink
-                          to={`/dashboard/${
-                            auth?.user?.role === 1 ? "admin" : "user"
-                          }`}
+                          to={`/dashboard/${auth?.user?.role === 1 ? "admin" : "user"}`}
                           className="dropdown-item"
+                          style={{ color: darkMode ? "lightgray" : "black" }}
                         >
                           Dashboard
                         </NavLink>
@@ -128,6 +155,7 @@ const Header = () => {
                           onClick={handleLogout}
                           to="/login"
                           className="dropdown-item"
+                          style={{ color: darkMode ? "lightgray" : "black" }}
                         >
                           Logout
                         </NavLink>
@@ -141,7 +169,7 @@ const Header = () => {
                   <NavLink
                     to="/cart"
                     className="nav-link"
-                    style={{ color: "white" }}
+                    style={{ color: darkMode ? "white" : "black" }}
                   >
                     <IconCart />
                     Cart

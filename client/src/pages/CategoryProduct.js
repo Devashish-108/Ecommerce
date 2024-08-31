@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../components/Layout/Layout";
 import { useParams, useNavigate } from "react-router-dom";
-import "../styles/CategoryProductStyles.css";
+import "./CategoryProduct.css";
 import axios from "axios";
+
 const CategoryProduct = () => {
   const params = useParams();
   const navigate = useNavigate();
@@ -10,9 +11,10 @@ const CategoryProduct = () => {
   const [category, setCategory] = useState([]);
 
   useEffect(() => {
-    if (params?.slug) getPrductsByCat();
+    if (params?.slug) getProductsByCategory();
   }, [params?.slug]);
-  const getPrductsByCat = async () => {
+
+  const getProductsByCategory = async () => {
     try {
       const { data } = await axios.get(
         `https://ecommerce-eeqh.onrender.com/api/v1/product/product-category/${params.slug}`
@@ -26,71 +28,56 @@ const CategoryProduct = () => {
 
   return (
     <Layout>
-      <div className="container category">
-        <h4 className="text-center">Category - {category?.name}</h4>
-        <h6 className="text-center">{products?.length} result found </h6>
+      <div className="container">
+        <div className="category-header text-center">
+          <h4 className="category-title">Category - {category?.name}</h4>
+          <h6 className="results-found">{products?.length} result found</h6>
+        </div>
         <div className="row">
-          <div className="col-md-9 offset-1">
-            <div className="d-flex flex-wrap">
-              {products?.map((p) => (
-                <div className="card m-2" key={p._id}>
-                  <img
-                    src={`https://ecommerce-eeqh.onrender.com/api/v1/product/product-photo/${p._id}`}
-                    className="card-img-top"
-                    alt={p.name}
-                  />
-                  <div className="card-body">
-                    <div className="card-name-price">
-                      <h5 className="card-title">{p.name}</h5>
-                      <h5 className="card-title card-price">
-                        {p.price.toLocaleString("en-US", {
-                          style: "currency",
-                          currency: "USD",
-                        })}
-                      </h5>
-                    </div>
-                    <p className="card-text ">
-                      {p.description.substring(0, 60)}...
-                    </p>
-                    <div className="card-name-price">
-                      <button
-                        className="btn btn-info ms-1"
-                        onClick={() => navigate(`/product/${p.slug}`)}
-                      >
-                        More Details
-                      </button>
-                      {/* <button
-                    className="btn btn-dark ms-1"
-                    onClick={() => {
-                      setCart([...cart, p]);
-                      localStorage.setItem(
-                        "cart",
-                        JSON.stringify([...cart, p])
-                      );
-                      toast.success("Item Added to cart");
-                    }}
-                  >
-                    ADD TO CART
-                  </button> */}
-                    </div>
+          {products?.map((p) => (
+            <div className="col-md-4 mb-4" key={p._id}>
+              <div className="product-card">
+                <img
+                  src={`https://ecommerce-eeqh.onrender.com/api/v1/product/product-photo/${p._id}`}
+                  className="product-img"
+                  alt={p.name}
+                />
+                <div className="product-details">
+                  <h5 className="product-name">{p.name}</h5>
+                  <h5 className="product-price">
+                    {p.price.toLocaleString("en-US", {
+                      style: "currency",
+                      currency: "USD",
+                    })}
+                  </h5>
+                  <p className="product-description">
+                    {p.description.substring(0, 60)}...
+                  </p>
+                  <div className="product-buttons">
+                    <button
+                      className="btn btn-info"
+                      onClick={() => navigate(`/product/${p.slug}`)}
+                    >
+                      More Details
+                    </button>
+                    {/* <button
+                      className="btn btn-dark"
+                      onClick={() => {
+                        setCart([...cart, p]);
+                        localStorage.setItem(
+                          "cart",
+                          JSON.stringify([...cart, p])
+                        );
+                        toast.success("Item Added to cart");
+                      }}
+                    >
+                      ADD TO CART
+                    </button> */}
                   </div>
                 </div>
-              ))}
+              </div>
             </div>
-            {/* <div className="m-2 p-3">
-            {products && products.length < total && (
-              <button
-                className="btn btn-warning"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setPage(page + 1);
-                }}
-              >
-                {loading ? "Loading ..." : "Loadmore"}
-              </button>
-            )}
-          </div> */}
-          </div>
+          ))}
         </div>
       </div>
     </Layout>
